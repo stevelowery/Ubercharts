@@ -7,5 +7,6 @@ build
 target
 .project
 .classpath
+.settings
 bin
 out
