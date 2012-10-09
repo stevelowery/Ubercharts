@@ -1,51 +1,61 @@
 package com.comsysto.insight.model.options;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
 import java.io.Serializable;
+
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
  * @author zutherb
  */
-@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Series implements Serializable {
-    private static final long serialVersionUID = -517145988398000617L;
 
-    private String cursor;
-    private Events events;
-    private DataLabels dataLabels;
-    private Stacking stacking;
+	private static final long serialVersionUID = -517145988398000617L;
 
-    public String getCursor() {
-        return cursor;
-    }
+	private String cursor;
+	private Events events;
+	private DataLabels dataLabels;
+	private Stacking stacking;
+	private Integer pointWidth;
 
-    public void setCursor(String cursor) {
-        this.cursor = cursor;
-    }
+	public String getCursor() {
+		return cursor;
+	}
 
-    public Events getEvents() {
-        return events;
-    }
+	public void setCursor(String cursor) {
+		this.cursor = cursor;
+	}
 
-    public void setEvents(Events events) {
-        this.events = events;
-    }
+	public Events getEvents() {
+		return events;
+	}
 
-    public DataLabels getDataLabels() {
-        return dataLabels;
-    }
+	public void setEvents(Events events) {
+		this.events = events;
+	}
 
-    public Series setDataLabels(DataLabels dataLabels) {
-        this.dataLabels = dataLabels;
-        return this;
-    }
+	public DataLabels getDataLabels() {
+		return dataLabels;
+	}
 
-    public void setStacking(Stacking stacking) {
-        this.stacking = stacking;
-    }
+	public Series setDataLabels(DataLabels dataLabels) {
+		this.dataLabels = dataLabels;
+		return this;
+	}
 
-    public Stacking getStacking() {
-        return stacking;
-    }
+	public void setStacking(Stacking stacking) {
+		this.stacking = stacking;
+	}
+
+	public Stacking getStacking() {
+		return stacking;
+	}
+
+	public Integer getPointWidth() {
+		return pointWidth;
+	}
+
+	public void setPointWidth(Integer pointWidth) {
+		this.pointWidth = pointWidth;
+	}
 }
