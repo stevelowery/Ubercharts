@@ -1,24 +1,22 @@
 /*
- Copyright 2011 comSysto GmbH
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Copyright 2011 comSysto GmbH
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
  */
 
 package com.comsysto.insight.model.options.series.generic;
 
-import com.comsysto.insight.model.options.ChartType;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.comsysto.insight.model.options.ChartType;
 
 /**
  * Abstract implementation of ISeries, implementing all needed methods, except for {@link ISeries#setData(Object)}. You
@@ -26,7 +24,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
  * variations supported by Highcharts.
  * <p/>
  * Date: Feb 18, 2011 Time: 6:06:55 PM
- *
+ * 
  * @author Mohammed El Batya
  * @see ISeries
  * @see com.comsysto.insight.model.options.series.impl.CoordinateSeries
@@ -35,105 +33,118 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
  * @see com.comsysto.insight.model.options.series.impl.NumberSeries
  * @see com.comsysto.insight.model.options.series.impl.PointSeries
  */
-@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
 
-    /** {@link ISeries#getData()} */
-    protected DataType mData = null;
+	/** {@link ISeries#getData()} */
+	protected DataType mData = null;
 
-    /** {@link ISeries#getName()} */
-    private String mName = "";
+	/** {@link ISeries#getName()} */
+	private String mName = "";
 
-    /** {@link ISeries#getStack()} */
-    private String mStack = "";
+	/** {@link ISeries#getStack()} */
+	private String mStack = "";
 
-    /** {@link ISeries#getType()} */
-    private ChartType mType;
+	/** {@link ISeries#getType()} */
+	private ChartType mType;
 
-    /** {@link ISeries#getXAxis()} */
-    private Integer mXAxis;
+	/** {@link ISeries#getXAxis()} */
+	private Integer mXAxis;
 
-    /** {@link ISeries#getYAxis()} */
-    private Integer mYAxis;
+	/** {@link ISeries#getYAxis()} */
+	private Integer mYAxis;
 
-    /**
-     * Default Constructor for this series.
-     * <p/>
-     * Everything is set to its default value.
-     */
-    public AbstractSeries() {
-    }
+	private Boolean showInLegend;
 
-    /**
-     * Constructor, which sets the mName for this series. Everything else is set to its default value.
-     *
-     * @param pName the mName for this series
-     * @see #setName(String)
-     */
-    public AbstractSeries(String pName) {
-        mName = pName;
-    }
+	/**
+	 * Default Constructor for this series.
+	 * <p/>
+	 * Everything is set to its default value.
+	 */
+	public AbstractSeries() {
+	}
 
-    /** {@link ISeries#getName()} */
-    public String getName() {
-        return mName;
-    }
+	/**
+	 * Constructor, which sets the mName for this series. Everything else is set to its default value.
+	 * 
+	 * @param pName the mName for this series
+	 * @see #setName(String)
+	 */
+	public AbstractSeries(String pName) {
+		mName = pName;
+	}
 
-    /** {@link ISeries#setName(String)} */
-    public ISeries<DataType> setName(String pName) {
-        mName = pName;
-        return (ISeries<DataType>) this;
-    }
+	/** {@link ISeries#getName()} */
+	public String getName() {
+		return mName;
+	}
 
-    /** {@link ISeries#getStack()} */
-    public String getStack() {
-        return mStack;
-    }
+	/** {@link ISeries#setName(String)} */
+	public ISeries<DataType> setName(String pName) {
+		mName = pName;
+		return this;
+	}
 
-    /** {@link ISeries#setStack(String)} */
-    public ISeries<DataType> setStack(String pStack) {
-        mStack = pStack;
-        return (ISeries<DataType>) this;
-    }
+	/** {@link ISeries#getStack()} */
+	public String getStack() {
+		return mStack;
+	}
 
-    /** {@link ISeries#getType()} */
-    public ChartType getType() {
-        return mType;
-    }
+	/** {@link ISeries#setStack(String)} */
+	public ISeries<DataType> setStack(String pStack) {
+		mStack = pStack;
+		return this;
+	}
 
-    /** {@link ISeries#setType(com.comsysto.insight.model.options.ChartType) } */
-    public ISeries<DataType> setType(ChartType pType) {
-        mType = pType;
-        return (ISeries<DataType>) this;
-    }
+	/** {@link ISeries#getType()} */
+	public ChartType getType() {
+		return mType;
+	}
 
-    /** {@link ISeries#getXAxis()} */
-    @JsonProperty("xAxis")
-    public Integer getXAxis() {
-        return mXAxis;
-    }
+	/** {@link ISeries#setType(com.comsysto.insight.model.options.ChartType) } */
+	public ISeries<DataType> setType(ChartType pType) {
+		mType = pType;
+		return this;
+	}
 
-    /** {@link ISeries#setXAxis(Integer)} */
-    public ISeries<DataType> setXAxis(Integer pXAxis) {
-        mXAxis = pXAxis;
-        return (ISeries<DataType>) this;
-    }
+	/** {@link ISeries#getXAxis()} */
+	@JsonProperty("xAxis")
+	public Integer getXAxis() {
+		return mXAxis;
+	}
 
-    /** {@link ISeries#getYAxis()} */
-    @JsonProperty("yAxis")
-    public Integer getYAxis() {
-        return mYAxis;
-    }
+	/** {@link ISeries#setXAxis(Integer)} */
+	public ISeries<DataType> setXAxis(Integer pXAxis) {
+		mXAxis = pXAxis;
+		return this;
+	}
 
-    /** {@link ISeries#setYAxis(Integer)} */
-    public ISeries<DataType> setYAxis(Integer pYAxis) {
-        mYAxis = pYAxis;
-        return (ISeries<DataType>) this;
-    }
+	/** {@link ISeries#getYAxis()} */
+	@JsonProperty("yAxis")
+	public Integer getYAxis() {
+		return mYAxis;
+	}
 
-    /** {@link ISeries#getData()} */
-    public DataType getData() {
-        return mData;
-    }
+	/** {@link ISeries#setYAxis(Integer)} */
+	public ISeries<DataType> setYAxis(Integer pYAxis) {
+		mYAxis = pYAxis;
+		return this;
+	}
+
+	/** {@link ISeries#getData()} */
+	public DataType getData() {
+		return mData;
+	}
+
+	@Override
+	public Boolean getShowInLegend() {
+		return showInLegend;
+	}
+
+	@Override
+	public AbstractSeries<DataType> setShowInLegend(Boolean showInLegend) {
+		this.showInLegend = showInLegend;
+		return this;
+	}
 
 }

@@ -1,63 +1,74 @@
 package com.comsysto.insight.model.options;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
 import java.io.Serializable;
+
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
  * @author zutherb
  */
-@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class PlotOption implements Serializable {
-    private static final long serialVersionUID = -1641413182537105513L;
 
-    private Point point;
-    private Boolean animation;
-    private Boolean allowPointSelect;
-    private String cursor;
-    private DataLabels dataLabels;
+	private static final long serialVersionUID = -1641413182537105513L;
 
-    public Boolean getAnimation() {
-        return animation;
-    }
+	private Point point;
+	private Boolean animation;
+	private Boolean allowPointSelect;
+	private String cursor;
+	private DataLabels dataLabels;
+	private String stacking;
 
-    public void setAnimation(Boolean animation) {
-        this.animation = animation;
-    }
+	public Boolean getAnimation() {
+		return animation;
+	}
 
-    public Point getPoint() {
-        return point;
-    }
+	public void setAnimation(Boolean animation) {
+		this.animation = animation;
+	}
 
-    public void setPoint(Point point) {
-        this.point = point;
-    }
+	public Point getPoint() {
+		return point;
+	}
 
-    public void setAllowPointSelect(boolean allowPointSelect) {
-        this.allowPointSelect = allowPointSelect;
-    }
+	public void setPoint(Point point) {
+		this.point = point;
+	}
 
-    public Boolean getAllowPointSelect() {
-        return allowPointSelect;
-    }
+	public void setAllowPointSelect(boolean allowPointSelect) {
+		this.allowPointSelect = allowPointSelect;
+	}
 
-    public void setAllowPointSelect(Boolean allowPointSelect) {
-        this.allowPointSelect = allowPointSelect;
-    }
+	public Boolean getAllowPointSelect() {
+		return allowPointSelect;
+	}
 
-    public String getCursor() {
-        return cursor;
-    }
+	public void setAllowPointSelect(Boolean allowPointSelect) {
+		this.allowPointSelect = allowPointSelect;
+	}
 
-    public void setCursor(String cursor) {
-        this.cursor = cursor;
-    }
+	public String getCursor() {
+		return cursor;
+	}
 
-    public DataLabels getDataLabels() {
-        return dataLabels;
-    }
+	public void setCursor(String cursor) {
+		this.cursor = cursor;
+	}
 
-    public void setDataLabels(DataLabels dataLabels) {
-        this.dataLabels = dataLabels;
-    }
+	public DataLabels getDataLabels() {
+		return dataLabels;
+	}
+
+	public void setDataLabels(DataLabels dataLabels) {
+		this.dataLabels = dataLabels;
+	}
+
+	public String getStacking() {
+		return stacking;
+	}
+
+	public PlotOption setStacking(String stacking) {
+		this.stacking = stacking;
+		return this;
+	}
 }
