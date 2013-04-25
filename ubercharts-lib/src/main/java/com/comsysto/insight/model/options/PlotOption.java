@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import com.comsysto.insight.model.options.more.Dial;
+import com.comsysto.insight.model.options.more.Pivot;
+
 /**
  * @author zutherb
  */
@@ -18,6 +21,8 @@ public class PlotOption implements Serializable {
 	private String cursor;
 	private DataLabels dataLabels;
 	private String stacking;
+	private Dial dial;
+	private Pivot pivot;
 
 	public Boolean getAnimation() {
 		return animation;
@@ -69,6 +74,24 @@ public class PlotOption implements Serializable {
 
 	public PlotOption setStacking(String stacking) {
 		this.stacking = stacking;
+		return this;
+	}
+
+	public Dial getDial() {
+		return dial;
+	}
+
+	public PlotOption setDial(Dial dial) {
+		this.dial = dial;
+		return this;
+	}
+
+	public Pivot getPivot() {
+		return pivot;
+	}
+
+	public PlotOption setPivot(Pivot pivot) {
+		this.pivot = pivot;
 		return this;
 	}
 }

@@ -20,6 +20,7 @@ public class PlotOptions implements Serializable {
     private PlotOption pie;
     private PlotOption scatter;
     private PlotOption spline;
+    private PlotOption gauge;
     private Series series;
 
     public PlotOption getSpline() {
@@ -94,6 +95,14 @@ public class PlotOptions implements Serializable {
         this.series = series;
         return this;
     }
+    
+	public PlotOption getGauge() {
+		return gauge;
+	}
+	
+	public void setGauge(PlotOption gauge) {
+		this.gauge = gauge;
+	}
 
     public void initializeNullPlotOption(){
         if(area == null)        area = new PlotOption();
@@ -104,6 +113,7 @@ public class PlotOptions implements Serializable {
         if(pie == null)         pie = new PlotOption();
         if(scatter == null)     scatter = new PlotOption();
         if(spline == null)      spline = new PlotOption();
+        if(gauge == null)      gauge = new PlotOption();
     }
 
     @JsonIgnore
@@ -117,6 +127,7 @@ public class PlotOptions implements Serializable {
         if(pie != null)         plotOptions.add(pie);
         if(scatter != null)     plotOptions.add(scatter);
         if(spline != null)      plotOptions.add(spline);
+        if(gauge != null)      plotOptions.add(gauge);
         return plotOptions;
     }
 }

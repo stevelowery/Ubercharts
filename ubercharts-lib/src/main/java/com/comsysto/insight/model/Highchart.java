@@ -41,6 +41,7 @@ import com.comsysto.insight.model.options.Point;
 import com.comsysto.insight.model.options.Subtitle;
 import com.comsysto.insight.model.options.Symbol;
 import com.comsysto.insight.model.options.Tooltip;
+import com.comsysto.insight.model.options.more.Pane;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -67,6 +68,7 @@ public class Highchart implements Serializable {
 	private Navigation navigation;
 	private PlotOptions plotOptions;
 	private int[] margin;
+	private Pane pane;
 
 	public Highchart() {
 		yAxes.add(new Axis());
@@ -293,6 +295,15 @@ public class Highchart implements Serializable {
 
 	public Highchart setMargin(int[] margin) {
 		this.margin = margin;
+		return this;
+	}
+
+	public Pane getPane() {
+		return pane;
+	}
+
+	public Highchart setPane(Pane pane) {
+		this.pane = pane;
 		return this;
 	}
 

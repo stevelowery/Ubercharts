@@ -31,6 +31,18 @@ import com.comsysto.insight.model.Highchart;
 public class HighchartsMarkupContainer extends WebMarkupContainer {
 
 	private static final long serialVersionUID = 1L;
+	private static final String[] PGI_CHART_COLOR_PALLETTE = new String[] {
+			"#2f6e91",
+			"#ff9332",
+			"#6a2329",
+			"#092f46",
+			"#d95c1f",
+			"#33765e",
+			"#845285",
+			"#70bde8",
+			"#12484f",
+			"#4d3d5a"
+	};
 
 	public HighchartsMarkupContainer(String id, IModel<Highchart> highchartsModel) {
 		super(id, highchartsModel);
@@ -39,10 +51,15 @@ public class HighchartsMarkupContainer extends WebMarkupContainer {
 
 	private String generateHighchartsJS() {
 		Highchart highchart = (Highchart) getDefaultModelObject();
-		highchart.getChart().setRenderTo(getMarkupId());
+
+		if (highchart.getColors() == null) {
+			highchart.setColors(PGI_CHART_COLOR_PALLETTE);
+		}
+
+		highchart.getChart().setClassName("chart");
 
 		StringBuffer js = new StringBuffer();
-		js.append("new Highcharts.Chart(");
+		js.append("$(\"#").append(getMarkupId()).append("\").highcharts(");
 		js.append(highchart.toJson());
 		js.append(" );");
 		return js.toString();
@@ -51,6 +68,7 @@ public class HighchartsMarkupContainer extends WebMarkupContainer {
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(HighchartsMarkupContainer.class, "highcharts.js")));
+		response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(HighchartsMarkupContainer.class, "highcharts-more.js")));
 		response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(HighchartsMarkupContainer.class, "exporting.js")));
 		response.render(OnDomReadyHeaderItem.forScript(generateHighchartsJS()));
 	}
