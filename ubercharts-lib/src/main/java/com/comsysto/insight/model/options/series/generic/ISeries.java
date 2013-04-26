@@ -153,4 +153,8 @@ public interface ISeries<DataType> extends Serializable {
 
 	ISeries<DataType> setShowInLegend(Boolean showInLegend);
 
+	String getColor();
+
+	ISeries<DataType> setColor(String color);
+
 }

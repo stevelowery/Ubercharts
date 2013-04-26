@@ -56,6 +56,8 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
 
 	private Boolean showInLegend;
 
+	private String color;
+
 	/**
 	 * Default Constructor for this series.
 	 * <p/>
@@ -147,4 +149,14 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
 		return this;
 	}
 
+	@Override
+	public String getColor() {
+		return color;
+	}
+
+	@Override
+	public AbstractSeries<DataType> setColor(String color) {
+		this.color = color;
+		return this;
+	}
 }
