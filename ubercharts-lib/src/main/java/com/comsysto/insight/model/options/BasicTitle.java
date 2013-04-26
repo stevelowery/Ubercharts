@@ -29,6 +29,7 @@ class BasicTitle implements Serializable {
 	private Map<String, String> mStyle;
 	private Integer x;
 	private Integer y;
+	private Boolean enabled = Boolean.TRUE;
 
 	public BasicTitle(String pText) {
 		mText = pText;
@@ -82,6 +83,15 @@ class BasicTitle implements Serializable {
 
 	public BasicTitle setY(Integer y) {
 		this.y = y;
+		return this;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public BasicTitle setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 		return this;
 	}
 }
