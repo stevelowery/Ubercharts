@@ -23,6 +23,7 @@ public class PlotOption implements Serializable {
 	private String stacking;
 	private Dial dial;
 	private Pivot pivot;
+	private Number threshold;
 
 	public Boolean getAnimation() {
 		return animation;
@@ -92,6 +93,15 @@ public class PlotOption implements Serializable {
 
 	public PlotOption setPivot(Pivot pivot) {
 		this.pivot = pivot;
+		return this;
+	}
+
+	public Number getThreshold() {
+		return threshold;
+	}
+
+	public PlotOption setThreshold(Number threshold) {
+		this.threshold = threshold;
 		return this;
 	}
 }
